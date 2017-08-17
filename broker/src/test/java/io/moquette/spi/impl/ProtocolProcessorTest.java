@@ -170,7 +170,7 @@ public class ProtocolProcessorTest extends AbstractProtocolProcessorCommonUtils 
         NettyUtils.userName(m_channel, fakeUserName);
 
         IAuthorizator mockAuthorizator = mock(IAuthorizator.class);
-        when(mockAuthorizator.canRead(eq(new Topic(FAKE_TOPIC)), eq(fakeUserName), eq(FAKE_CLIENT_ID)))
+        when(mockAuthorizator.canRead(eq(new Topic(FAKE_TOPIC)), eq(fakeUserName), eq(FAKE_CLIENT_ID), eq(null)))
             .thenReturn(false);
 
         m_processor.init(subscriptions, m_messagesStore, m_sessionStore, m_mockAuthenticator, true, mockAuthorizator,

@@ -17,6 +17,7 @@
 package io.moquette.spi.security;
 
 import io.moquette.spi.impl.subscriptions.Topic;
+import io.netty.handler.codec.mqtt.MqttPublishMessage;
 
 /**
  * ACL checker.
@@ -37,7 +38,7 @@ public interface IAuthorizator {
      *            the client
      * @return true if the user from client can publish data on topic.
      */
-    boolean canWrite(Topic topic, String user, String client);
+    boolean canWrite(Topic topic, String user, String client, Object message);
 
-    boolean canRead(Topic topic, String user, String client);
+    boolean canRead(Topic topic, String user, String client, Object message);
 }

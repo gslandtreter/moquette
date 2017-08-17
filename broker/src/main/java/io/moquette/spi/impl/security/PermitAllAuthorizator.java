@@ -22,12 +22,12 @@ import io.moquette.spi.security.IAuthorizator;
 public class PermitAllAuthorizator implements IAuthorizator {
 
     @Override
-    public boolean canWrite(Topic topic, String user, String client) {
+    public boolean canWrite(Topic topic, String user, String client, Object msg) {
         return true;
     }
 
     @Override
-    public boolean canRead(Topic topic, String user, String client) {
+    public boolean canRead(Topic topic, String user, String client, Object msg) {
         return true;
     }
 }

@@ -79,12 +79,12 @@ public class ConfigurationClassLoaderTest implements IAuthenticator, IAuthorizat
     }
 
     @Override
-    public boolean canWrite(Topic topic, String user, String client) {
+    public boolean canWrite(Topic topic, String user, String client, Object msg) {
         return true;
     }
 
     @Override
-    public boolean canRead(Topic topic, String user, String client) {
+    public boolean canRead(Topic topic, String user, String client, Object msg) {
         return true;
     }
 

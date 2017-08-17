@@ -90,7 +90,7 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic write /sensors");
 
         // verify
-        assertTrue(authorizator.canWrite(new Topic("/sensors"), "", ""));
+        assertTrue(authorizator.canWrite(new Topic("/sensors"), "", "", null));
     }
 
     @Test
@@ -98,7 +98,7 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic read /sensors");
 
         // verify
-        assertTrue(authorizator.canRead(new Topic("/sensors"), "", ""));
+        assertTrue(authorizator.canRead(new Topic("/sensors"), "", "", null));
     }
 
     @Test
@@ -107,8 +107,8 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic read /sensors/anemometer");
 
         // verify
-        assertTrue(authorizator.canWrite(new Topic("/sensors"), "", ""));
-        assertFalse(authorizator.canRead(new Topic("/sensors"), "", ""));
+        assertTrue(authorizator.canWrite(new Topic("/sensors"), "", "", null));
+        assertFalse(authorizator.canRead(new Topic("/sensors"), "", "", null));
     }
 
     @Test
@@ -116,7 +116,7 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic write /sensors/#");
 
         // verify
-        assertTrue(authorizator.canWrite(new Topic("/sensors/anemometer/wind"), "", ""));
+        assertTrue(authorizator.canWrite(new Topic("/sensors/anemometer/wind"), "", "", null));
     }
 
     @Test
@@ -124,7 +124,7 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic write /sensors/+");
 
         // verify
-        assertTrue(authorizator.canWrite(new Topic("/sensors/anemometer"), "", ""));
+        assertTrue(authorizator.canWrite(new Topic("/sensors/anemometer"), "", "", null));
     }
 
     @Test
@@ -133,8 +133,8 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("topic write /sensors");
 
         // verify
-        assertTrue(authorizator.canWrite(new Topic("/sensors"), "john", ""));
-        assertFalse(authorizator.canWrite(new Topic("/sensors"), "jack", ""));
+        assertTrue(authorizator.canWrite(new Topic("/sensors"), "john", "", null));
+        assertFalse(authorizator.canWrite(new Topic("/sensors"), "jack", "", null));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("pattern read /weather/italy/%c");
 
         // Verify
-        assertTrue(authorizator.canRead(new Topic("/weather/italy/anemometer1"), "", "anemometer1"));
+        assertTrue(authorizator.canRead(new Topic("/weather/italy/anemometer1"), "", "anemometer1", null));
     }
 
     @Test
@@ -150,6 +150,6 @@ public class AuthorizationsCollectorTest {
         authorizator.parse("pattern read /weather/%u/%c");
 
         // Verify
-        assertTrue(authorizator.canRead(new Topic("/weather/italy/anemometer1"), "italy", "anemometer1"));
+        assertTrue(authorizator.canRead(new Topic("/weather/italy/anemometer1"), "italy", "anemometer1", null));
     }
 }

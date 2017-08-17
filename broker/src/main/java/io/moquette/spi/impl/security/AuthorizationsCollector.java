@@ -104,12 +104,12 @@ class AuthorizationsCollector implements IAuthorizator {
     }
 
     @Override
-    public boolean canWrite(Topic topic, String user, String client) {
+    public boolean canWrite(Topic topic, String user, String client, Object msg) {
         return canDoOperation(topic, Authorization.Permission.WRITE, user, client);
     }
 
     @Override
-    public boolean canRead(Topic topic, String user, String client) {
+    public boolean canRead(Topic topic, String user, String client, Object msg) {
         return canDoOperation(topic, Authorization.Permission.READ, user, client);
     }
 
